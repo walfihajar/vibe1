@@ -26,14 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'pseudo',
-        'email',
-        'bio',
-        'profile_photo_path',
-        'password',
-    ];
+    protected $fillable = ['name', 'pseudo', 'email', 'bio', 'profile_photo_path', 'password'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -67,5 +60,9 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
